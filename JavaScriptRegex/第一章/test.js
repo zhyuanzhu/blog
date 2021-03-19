@@ -20,5 +20,13 @@ const reg3 = /\d{2,5}/g
 const reg4 = /\d{2,5}?/g
 const str3 = '123 1234 12345 123456'
 
-testReg(reg3, str3)
-testReg(reg4, str3)
+// testReg(reg3, str3)
+// testReg(reg4, str3)
+
+
+// 分支结构
+const reg5 = /good|goodbye/
+const reg6 = /goodbye|good/
+const str5 = 'goodbye'
+testReg(reg5, str5)
+testReg(reg6, str5)

@@ -109,7 +109,7 @@
 
 - 3.2 贪婪匹配与惰性匹配
 
-  - `贪婪匹配`：会尽可能多的匹配
+  - `贪婪匹配`：会尽可能多的匹配 **匹配满足条件的最大长度**
 
   - `惰性匹配`：会尽可能少的匹配
   ```js
@@ -135,6 +135,18 @@
   | +?      | +       |
   | *?      | *       |
 
+## 4 多选分支
 
+- 4.1 使用 `（管道符）`  `|` 分割，表示其中任何之一
 
+- 4.2 分支结构是惰性的，即当前匹配到了就不会再往后面找了
+```js
+  const reg = /good|goodbye/
+  const str = 'goodbye'
+  console.log(str.match(reg))
+  // good
+  const reg2 = /goodbye|good/
+  console.log(str.match(reg2))
+  // goodbye
+```
 
