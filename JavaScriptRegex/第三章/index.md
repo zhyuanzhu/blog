@@ -126,4 +126,57 @@
     regex.test(str2)        // true
 
   ```
+
+## 4 非捕获括号
+
+  - 只想使用括号的最原始功能，但不会引用它，`既不在 API 里引用，也不在正则里反向引用`；此时可以使用 `非捕获括号`， `(?:p)`
+  ```js
+    const regex = /(?:ab)+/g
+    const str = 'ab ababc abba'
+    str.mathc(regex)
+    // ['ab', 'abab', 'ab']
+
+  ```
+
+## 5 案例
+
+- 5.1 模拟字符串 `trim` 方法
+```js
+  function trim (str) {
+    const regex = /^\s+|\s+$/g
+    return str.replace(regex, '')
+  }
+
+  // 提取出中间部分
+  function trim2 (str) {
+    const regex = /^\s*(.*?)\s*$/g
+    // 使用里惰性匹配 *?
+    return str.replace(regex, '$1')
+  }
+
+
+```
+
+- 5.2 驼峰化
+```js
+  function camelize (str) {
+    const regex = /[-\s](.)?/g
+    return str.replace(regex, (_, $1) => {
+      return $1 ? $1.toUpperCase() : ''
+    })
+  }
+
+```
+
+- 5.2 驼峰转中划线
+```js
+  function dasherize (str) {
+    const regex = /([A-Z])/g
+    return str.replace(regex, (_, $1) => {
+      return $1 ? `-${$1.toLowerCase()}` : ''
+    })
+  }
+
+```
+
   
